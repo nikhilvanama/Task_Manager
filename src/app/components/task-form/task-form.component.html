@@ -1,16 +1,17 @@
-<form class="task-form flex flex-col gap-4" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+<form class="task-form flex flex-col gap-4 p-5 bg-indigo-50 rounded-md" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <h4 class="text-2xl font-bold font-sans text-indigo-600">Add Task Details</h4>
     <div>
-        <label for="task" class="bkock">Task Name</label>
-        <textarea class="w-full bg-slate-100 border-slate-800 rounded h-20" formControlName="task"></textarea>
+        <label for="task" class="mb-3 text-sans font-medium">Task Name</label>
+        <textarea class="w-full bg-white rounded h-20 border-indigo-200" formControlName="task"></textarea>
     </div>
     <div>
-        <select id="status" class="w-full p-2 bg-slate-100 border-slate-800 rounded" formControlName="status">
+        <select id="status" class="w-full p-2 bg-white rounded border-indigo-200" formControlName="status">
             <option value="todo">To Do</option>
             <option value="inprogress">In Progress</option>
             <option value="completed">Completed</option>
         </select>
     </div>
     <div>
-        <button type="submit" class="bg-amber-500 px-4 py-1 border-amber-900 cursor-pointer">Add Task</button>
+        <button type="submit" class="bg-indigo-500 text-white px-4 py-1 border-indigo-700 transition delay-150 rounded-sm py-2 px-3 hover:bg-indigo-700 cursor-pointer">Add Task</button>
     </div>
 </form>
