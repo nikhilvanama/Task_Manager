@@ -1,0 +1,10 @@
+<div class="p-4 bg-slate-100 border-b border-gray-200">
+    <h3 class="text-lg font-semibold">{{taskItem().task}}</h3>
+    <p class="text-sm text-gray-600 mb-3">Status: <span class="text-gray-900 font-semibold">{{taskItem().status}}</span></p>
+    @for (item of action(); track $index) {
+        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer me-2" (click)="markAs(taskItem().task, item)">
+            {{item}}
+        </button>
+    }
+
+</div>

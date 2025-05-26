@@ -1,0 +1,17 @@
+<div class="max-w-7xl mx-auto">
+  <h1 class="text-3xl font-bold text-center p-4">Task Manager</h1>
+</div>
+
+<div class="grid grid-cols-4 gap-4 px-4">
+
+<!-- Task Form -->
+ <app-task-form></app-task-form>
+
+<!-- To-Do List -->
+<app-task-list [Heading]="'Todo'" [Tasks]="todoItems()"></app-task-list>
+<!-- In Progress List -->
+<app-task-list [Heading]="'In Progress'" [Tasks]="inProgress()"></app-task-list>
+<!-- Completed List -->
+<app-task-list [Heading]="'Completed'" [Tasks]="Completed()"></app-task-list>
+
+</div>

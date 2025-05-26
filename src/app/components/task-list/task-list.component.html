@@ -1,0 +1,7 @@
+<h2 class="text-xl text-bold mb-3">{{Heading()}}</h2>
+
+<div class="flex flex-col gap-2">
+    @for (item of Tasks(); track $index) {
+        <app-task-list-item [taskItem]="item"></app-task-list-item>
+    }
+</div>
