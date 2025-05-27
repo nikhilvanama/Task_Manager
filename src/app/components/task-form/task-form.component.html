@@ -3,7 +3,7 @@
     <div>
         <label for="task" class="mb-3 text-sans font-medium">Task Name</label>
         <textarea class="w-full bg-white rounded h-20 border-indigo-200" formControlName="task"></textarea>
-        <span *ngIf="task?.hasError('required')">
+        <span class="text-xs font-normal text-red-500" *ngIf="task?.hasError('required')">
             Task Name is Required
         </span>
     </div>
