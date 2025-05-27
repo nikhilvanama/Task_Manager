@@ -3,6 +3,9 @@
     <div>
         <label for="task" class="mb-3 text-sans font-medium">Task Name</label>
         <textarea class="w-full bg-white rounded h-20 border-indigo-200" formControlName="task"></textarea>
+        <span *ngIf="task?.hasError('required')">
+            Task Name is Required
+        </span>
     </div>
     <div>
         <select id="status" class="w-full p-2 bg-white rounded border-indigo-200" formControlName="status">
@@ -12,6 +15,8 @@
         </select>
     </div>
     <div>
-        <button type="submit" class="bg-indigo-500 text-white px-4 py-1 border-indigo-700 transition delay-150 rounded-sm py-2 px-3 hover:bg-indigo-700 cursor-pointer">Add Task</button>
+        <button type="submit"
+            class="bg-indigo-500 text-white px-4 py-1 border-indigo-700 transition delay-150 rounded-sm py-2 px-3 hover:bg-indigo-700 cursor-pointer">Add
+            Task</button>
     </div>
 </form>

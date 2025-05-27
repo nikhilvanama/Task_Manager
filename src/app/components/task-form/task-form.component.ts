@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormControl, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
-
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-task-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf, FormsModule],
   templateUrl: './task-form.component.html',
   styleUrl: './task-form.component.css'
 })
@@ -15,12 +15,17 @@ export class TaskFormComponent {
 
   taskForm = new FormGroup({
     task: new FormControl('', {
-      nonNullable: true
+      nonNullable: true,
+      validators: Validators.required
     }),
     status: new FormControl('todo', {
       nonNullable: true
     })
   })
+
+  get task() {
+    return this.taskForm.get('task');
+  }
 
   onSubmit() {
     const taskValue = this.taskForm.getRawValue();
