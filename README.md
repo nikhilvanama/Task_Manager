@@ -12,11 +12,11 @@ https://task-manager-zeta-wheat.vercel.app/
 
 ## Features
 
-* Create tasks with a title and initial status
-* View tasks grouped by status
-* Change the status of a task anytime
-* Reusable components for better maintainability
-* Centralized task management using Angular services
+* Create tasks with a title and initial status.
+* View tasks grouped by status.
+* Change the status of a task anytime.
+* Reusable components for better maintainability.
+* Centralized task management using Angular services.
 
 ## Getting Started
 
