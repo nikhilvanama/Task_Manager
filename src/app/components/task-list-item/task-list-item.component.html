@@ -1,5 +1,7 @@
+<!-- Individual task card with status indicator and action icons -->
 <div class="group bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-md hover:border-indigo-200/50 transition-all duration-300 relative overflow-hidden">
-    <!-- Status Indicator Line -->
+    
+    <!-- Left-aligned Status Indicator Line -->
     <div class="absolute left-0 top-0 bottom-0 w-1 transition-all group-hover:w-1.5"
          [class.bg-slate-300]="taskItem().status === 'todo'"
          [class.bg-amber-400]="taskItem().status === 'inprogress'"
@@ -7,11 +9,14 @@
     </div>
 
     <div class="flex flex-col gap-4">
+        <!-- Task Header/Title -->
         <h3 class="text-base font-bold text-slate-800 leading-tight group-hover:text-indigo-600 transition-colors">
             {{taskItem().task}}
         </h3>
         
+        <!-- Badge and Quick Actions Row -->
         <div class="flex items-center justify-between mt-1">
+            <!-- Distinct Status Badge -->
             <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider"
                  [class.bg-slate-100]="taskItem().status === 'todo'" [class.text-slate-500]="taskItem().status === 'todo'"
                  [class.bg-amber-50]="taskItem().status === 'inprogress'" [class.text-amber-600]="taskItem().status === 'inprogress'"
@@ -24,12 +29,14 @@
                 {{taskItem().status === 'inprogress' ? 'In Progress' : taskItem().status}}
             </div>
 
+            <!-- Hover Actions: Dynamic buttons based on current state -->
             <div class="flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                 @for (item of action(); track $index) {
                     <button 
                         class="p-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-500 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all cursor-pointer shadow-sm active:scale-90" 
                         [title]="'Move to ' + item"
                         (click)="markAs(taskItem().task, item)">
+                        <!-- Conditional SVGs for different statuses -->
                         @if (item === 'todo') {
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" /></svg>
                         } @else if (item === 'inprogress') {
@@ -42,4 +49,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>

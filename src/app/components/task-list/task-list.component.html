@@ -1,4 +1,7 @@
+<!-- Column container for a group of tasks sharing a status -->
 <div class="flex flex-col gap-5">
+    
+    <!-- Column Header with Dynamic Badge -->
     <div class="flex items-center justify-between px-2">
         <h2 class="text-sm font-bold uppercase tracking-widest text-slate-500">{{Heading()}}</h2>
         <span class="bg-indigo-100 text-indigo-600 text-[10px] font-black px-2 py-0.5 rounded-full border border-indigo-200/50">
@@ -6,10 +9,14 @@
         </span>
     </div>
     
+    <!-- Content Area: Individual Task Cards -->
     <div class="flex flex-col gap-4 min-h-[100px]">
+        <!-- Loop through filtered tasks and render item components -->
         @for (item of Tasks(); track $index) {
             <app-task-list-item [taskItem]="item"></app-task-list-item>
         }
+        
+        <!-- Empty State Visual -->
         @if (Tasks().length === 0) {
             <div class="flex flex-col items-center justify-center p-8 rounded-2xl border-2 border-dashed border-slate-200 text-slate-400">
                 <p class="text-xs font-medium italic">Empty</p>

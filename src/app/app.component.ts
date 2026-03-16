@@ -11,13 +11,14 @@ import { TaskService } from './services/task.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+// Root component managing the layout and data distribution
 export class AppComponent {
   
  taskService = inject(TaskService);
 
- tasks = this.taskService.tasks;
+  tasks = this.taskService.tasks; // Master list of tasks from service
 
- todoItems = computed(()=> {
+  todoItems = computed(()=> { // Filtered list for 'Todo' status
   const tasks = this.tasks();
   return tasks.filter(task => task.status === 'todo');
  })

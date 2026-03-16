@@ -8,20 +8,21 @@ import { TaskService } from '../../services/task.service';
   templateUrl: './task-list-item.component.html',
   styleUrl: './task-list-item.component.css'
 })
+// Individual task card component with status action buttons
 export class TaskListItemComponent {
-  taskItem = input.required<TaskItem>();
+  taskItem = input.required<TaskItem>(); // The task data object
 
   statusOptions = ['todo', 'inprogress', 'completed'];
 
-  taskService = inject(TaskService);
+  taskService = inject(TaskService); // Service for updating task status
 
-  action = computed(() => {
+  action = computed(() => { // Calculate available status changes (filtering out current)
     const TaskItemValue = this.taskItem();
 
     return this.statusOptions.filter(x => x !== TaskItemValue.status);
   })
 
-  markAs(text: string, updatestatus: string) {
+  markAs(text: string, updatestatus: string) { // Trigger status update in service
     this.taskService.markAsStatus(text, updatestatus);
   }
 }
