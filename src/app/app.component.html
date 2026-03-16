@@ -1,17 +1,37 @@
-<div class="max-w-7xl mx-auto">
-  <h1 class="text-3xl font-bold text-center p-4">Task Manager</h1>
-</div>
+<div class="min-h-screen bg-linear-to-br from-slate-50 to-indigo-50/30">
+  <header class="glass sticky top-0 z-50 px-6 py-4 mb-8">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg transform -rotate-3 hover:rotate-0 transition-transform cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+          </svg>
+        </div>
+        <h1 class="text-2xl font-extrabold tracking-tight text-slate-900">
+          Task<span class="text-indigo-600">Flow</span>
+        </h1>
+      </div>
+      <div class="text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+        v1.0.0
+      </div>
+    </div>
+  </header>
 
-<div class="grid grid-cols-4 gap-[24px] px-4">
+  <main class="max-w-7xl mx-auto px-4 pb-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Task Form Section -->
+      <section class="lg:col-span-1">
+        <app-task-form></app-task-form>
+      </section>
 
-<!-- Task Form -->
- <app-task-form></app-task-form>
-
-<!-- To-Do List -->
-<app-task-list [Heading]="'Todo'" [Tasks]="todoItems()"></app-task-list>
-<!-- In Progress List -->
-<app-task-list [Heading]="'In Progress'" [Tasks]="inProgress()"></app-task-list>
-<!-- Completed List -->
-<app-task-list [Heading]="'Completed'" [Tasks]="Completed()"></app-task-list>
-
+      <!-- Task Columns -->
+      <section class="lg:col-span-3">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <app-task-list [Heading]="'Todo'" [Tasks]="todoItems()"></app-task-list>
+          <app-task-list [Heading]="'In Progress'" [Tasks]="inProgress()"></app-task-list>
+          <app-task-list [Heading]="'Completed'" [Tasks]="Completed()"></app-task-list>
+        </div>
+      </section>
+    </div>
+  </main>
 </div>
