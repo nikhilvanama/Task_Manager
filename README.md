@@ -1,22 +1,27 @@
-Here’s a detailed `README.md` file for your Angular Task Manager app:
+# 📝 TaskFlow – Modern Angular Task Manager
 
-
-# 📝 Task Manager – Angular App
-
-This project is a simple yet efficient Task Manager built using Angular. It allows users to create tasks with a name and status (`Todo`, `Inprogress`, or `Completed`), displays them in their respective status containers, and enables status transitions.
+A premium, visually stunning, and highly interactive Task Manager built with Angular and Tailwind CSS 4.0.
 
 ## 🔗 Live Application Link
 
 https://task-manager-zeta-wheat.vercel.app/
 
+## ✨ Latest Update: Modern UI Overhaul
+
+The application has been completely redesigned with a focus on premium aesthetics and user experience:
+
+*   **Design System**: Powered by **Tailwind CSS 4.0** and the **Inter** font family for a professional look.
+*   **Glassmorphism**: Sleek, translucent containers with blur effects.
+*   **Interactive Cards**: Task items now feature hover-based action buttons and color-coded status indicators.
+*   **Responsive Grid**: A dynamic layout that adapts seamlessly to desktop, tablet, and mobile devices.
+*   **Micro-animations**: Subtle transitions and hover effects for a premium feel.
 
 ## Features
 
-* Create tasks with a title and initial status
-* View tasks grouped by status
-* Change the status of a task anytime
-* Reusable components for better maintainability
-* Centralized task management using Angular services
+*   **Create Tasks**: Easily add tasks with custom names and initial status.
+*   **Visual Organization**: View tasks grouped into To-Do, In Progress, and Completed columns.
+*   **One-Click Transitions**: Move tasks between states instantly with intuitive action icons.
+*   **Real-time Updates**: Changes are reflected across the UI immediately via Angular signals/services.
 
 ## Getting Started
 
@@ -47,10 +52,10 @@ Navigate to `http://localhost:4200/` in your browser.
 | ------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | **Task State Management** | `Service`           | Used to store and update tasks globally. The service is injected into components using Angular's dependency injection.                   |
 | **Task Model**            | `Interface (Model)` | Created a `Task` model to define the shape of the data (e.g., `{ task: string, status: string }`). Ensures strong typing across the app. |
-| **Individual Task UI**    | `Component`         | Each task is rendered by a `TaskComponent`, which receives the task data and provides an option to change its status.                    |
-| **Task Form**             | `Component`         | The `TaskFormComponent` handles task creation using Angular forms.                                                                       |
-| **Status Containers**     | `Component`         | The `TaskContainerComponent` displays tasks based on their current status (`Todo`, `Inprogress`, `Completed`).                           |
-| **Main Wrapper**          | `AppComponent`      | Hosts all components and wires them together.                                                                                            |
+| **Individual Task UI**    | `Component`         | Each task is rendered by a `TaskListItemComponent`, featuring a design with status-aware indicators and interactive icons.                |
+| **Task Form**             | `Component`         | The `TaskFormComponent` handles task creation using premium glassmorphism styling and validation.                                         |
+| **Status Containers**     | `Component`         | The `TaskListComponent` displays tasks in structured columns with dynamic count badges.                                                  |
+| **Main Wrapper**          | `AppComponent`      | Hosts the modern header and the responsive grid layout.                                                                                  |
 
 ---
 
@@ -64,12 +69,12 @@ task-manager/
 │   │   ├── models/
 │   │   │   └── task-item.model.ts       # Task interface definition
 │   │   ├── services/
-│   │   │   └── task.service.ts     # Task state service
+│   │   │   └── task.service.ts          # Task state service
 │   │   ├── components/
-│   │   │   ├── task-list-item/     # TaskListItemComponent
-│   │   │   ├── task-form/          # TaskFormComponent
-│   │   │   └── task-list/          # TaskListComponent
-│   │   └── app.component.ts        # Main app wrapper
+│   │   │   ├── task-list-item/          # TaskListItemComponent
+│   │   │   ├── task-form/               # TaskFormComponent
+│   │   │   └── task-list/               # TaskListComponent
+│   │   └── app.component.ts             # Main app wrapper
 │   │
 │   └── main.ts
 ├── angular.json
@@ -78,25 +83,20 @@ task-manager/
 
 ## How It Works
 
-1. **Add a Task:**
+1.  **Add a Task:**
+    *   Enter a task name in the "New Task" card.
+    *   The task is instantly distributed to the appropriate status column.
 
-   * Enter a task name and choose a status from the dropdown (`Todo`, `Inprogress`, `Completed`).
-   * Task is added to the global service.
+2.  **Manage States:**
+    *   Hover over any task to see potential status transitions.
+    *   Click an icon (Move to In Progress, Complete, etc.) to shift the task state.
 
-2. **Display Tasks by Status:**
+3.  **Automatic Reflow:**
+    *   The responsive grid automatically adjusts columns based on your screen size.
 
-   * The service filters tasks by their status.
-   * Each container component displays tasks belonging to one status.
+## Technical Details
 
-3. **Change Task Status:**
-
-   * A dropdown within each task lets you change the task's status.
-   * The component triggers the service to update the status, which then re-renders the UI.
-
-
-## Angular Concepts in Use
-
-* **Component Communication**: `@Input()` and `@Output()` used between child and parent components.
-* **Service Injection**: Angular's DI is used to share a single task service across the app.
-* **Reactive Updates**: The task list is automatically refreshed when the service state changes.
-* **Form Handling**: The form component captures user input using Angular’s template-driven or reactive forms.
+*   **Framework**: Angular 19
+*   **Styling**: Tailwind CSS 4.0
+*   **Typography**: Inter
+*   **Component Architecture**: Signal-based inputs and computed properties for high performance.
