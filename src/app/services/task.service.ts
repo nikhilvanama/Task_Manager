@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, effect } from '@angular/core';
 import { TaskItem } from '../models/task-item.model';
 
 @Injectable({
@@ -7,7 +7,21 @@ import { TaskItem } from '../models/task-item.model';
 // Centralized service for managing task state across the application
 export class TaskService {
 
-  tasks = signal<TaskItem[]>([]); // Reactive signal holding the list of tasks
+  // Load initial tasks from session storage or default to empty array
+  private storageKey = 'taskflow_tasks';
+  tasks = signal<TaskItem[]>(this.loadTasks());
+
+  constructor() {
+    // Automatically save tasks to session storage whenever the signal changes
+    effect(() => {
+      sessionStorage.setItem(this.storageKey, JSON.stringify(this.tasks()));
+    });
+  }
+
+  private loadTasks(): TaskItem[] {
+    const savedTasks = sessionStorage.getItem(this.storageKey);
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  }
 
   addTask(task: string, status: string) { // Create and add a new task to the collection
     this.tasks.update((previousState) => {
